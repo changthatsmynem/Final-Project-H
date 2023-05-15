@@ -1,15 +1,16 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
 const ActivitySchema = new Schema({
-  title: { type: String, required: true },
-  type: { type: String, required: true },
-  start: { type: Date, required: true },
-  end: { type: Date, required: true },
-  duration: { type: Number, required: true },
-  description: { type: String },
+  activityTitle: { type: String, required: true },
+  activityType: { type: String, required: true },
+  startTime: { type: Date, required: true },
+  finishTime: { type: Date, required: true },
+  activityDetail: { type: String },
   creator: [{ type: mongoose.Types.ObjectId, required: true, ref: "User" }],
 });
 
-module.exports = mongoose.model("Activity", ActivitySchema);
+const Activity = mongoose.model("Activity", ActivitySchema, 'activities');
+
+export default Activity;

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
@@ -6,13 +6,12 @@ const UserSchema = new Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true, minlength: 6, maxlength: 20 },
+  password: { type: String, required: true, min: 6, max: 20 },
   weight: { type: Number, required: true },
   height: { type: Number, required: true },
   age: { type: Number, required: true },
-  activity: [
-    { type: mongoose.Types.ObjectId, required: true, ref: "Activity" },
-  ],
 });
 
-module.exports = mongoose.model("User", UserSchema);
+const User = mongoose.model("User", UserSchema, "users");
+
+export default User;
