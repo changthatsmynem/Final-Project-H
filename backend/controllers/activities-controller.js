@@ -11,6 +11,7 @@ const getActivityByUserId = async (req, res, next) => {
   let userActivities;
   try {
     userActivities = await User.findById(userId).populate("activities");
+    res.status(200).json(userActivities.toJSON());
   } catch (err) {
     const error = new HttpError(
       "Something went wrong, could not find your activity.",
@@ -21,9 +22,8 @@ const getActivityByUserId = async (req, res, next) => {
   }
 };
 
-export const createActivity = async (req,res, next) => {
+export const createActivity = async (req, res, next) => {
   const {} = req.body;
-  
-}
+};
 
 export default getActivityByUserId;

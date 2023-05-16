@@ -8,9 +8,10 @@ const ActivitySchema = new Schema({
   startTime: { type: Date, required: true },
   finishTime: { type: Date, required: true },
   activityDetail: { type: String },
+  activityStatus: { type: String, required: true },
   creator: [{ type: mongoose.Types.ObjectId, required: true, ref: "User" }],
 });
 
-const Activity = mongoose.model("Activity", ActivitySchema, 'activities');
+const Activity = mongoose.model("Activity", ActivitySchema, "activities");
 
 export default Activity;
